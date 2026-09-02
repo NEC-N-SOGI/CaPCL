@@ -1,0 +1,14 @@
+{
+  "config_path": {
+    "local": "/capcl/experiments/configs/dataset/",
+    "server1": "/path/to/capcl/experiments/configs/dataset/"
+  },
+  "data_path": {
+    "local": "/capcl/data/share/",
+    "server1": "/path/to/data/"
+  },
+  "result_path": {
+    "local": "/capcl/experiments/results/local/",
+    "server1": "/path/to/results/"
+  }
+}

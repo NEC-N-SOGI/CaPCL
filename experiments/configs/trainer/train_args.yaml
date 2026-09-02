@@ -1,0 +1,3 @@
+batch_size: 32
+bf16: true
+logging_steps: 10

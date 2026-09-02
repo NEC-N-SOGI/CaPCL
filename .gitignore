@@ -1,0 +1,15 @@
+.build.*
+.python-version
+*.pyc
+*.egg-info/
+
+src/**/*.yaml
+
+/data/share*
+data/
+
+experiments/results
+experiments/configs/dataset
+
+.coverage
+directory_settings.json

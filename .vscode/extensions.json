@@ -1,0 +1,20 @@
+{
+  "recommendations": [
+    "ms-python.python",
+    "ms-toolsai.jupyter",
+    "ms-toolsai.jupyter-renderers",
+    "ms-python.mypy-type-checker",
+    "davidanson.vscode-markdownlint",
+    "tamasfe.even-better-toml",
+    "christian-kohler.path-intellisense",
+    "codezombiech.gitignore",
+    "njpwerner.autodocstring",
+    "oderwat.indent-rainbow",
+    "shardulm94.trailing-spaces",
+    "ionutvmi.path-autocomplete",
+    "charliermarsh.ruff",
+    "yzhang.markdown-all-in-one",
+    "astral-sh.ty",
+    "ms-pyright.pyright"
+  ]
+}

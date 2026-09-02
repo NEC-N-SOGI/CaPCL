@@ -1,0 +1,18 @@
+# Config for the synthetic-shapes sample.
+# Generate the data first:
+#   uv run python experiments/sample/generate_synthetic_data.py --machine local
+
+dataset_path: "synthetic_shapes.json"
+
+# LoRA keeps the example light; use "ft" for full fine-tuning
+train_strategy: "lora"
+
+# -- CapCL: auxiliary generated captions
+use_caption: true
+num_gen_caps: 2
+w_cap_loss: 1.0
+
+w_dense_cap_loss: 0.0
+w_itc_gen_loss: 0.0
+w_itc_dense_loss: 0.0
+captioning_model: ""

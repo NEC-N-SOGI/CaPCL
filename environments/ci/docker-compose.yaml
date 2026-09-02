@@ -1,0 +1,14 @@
+version: "3.8"
+
+services:
+  core:
+    image: core:${DOCKER_IMAGE_TAG_CI}
+    build:
+      args:
+        - BASE_IMAGE=python:3.12-bullseye
+        - PYTHON_VERSION=3.12
+      context: ../../
+      dockerfile: environments/Dockerfile
+    tty: true
+    volumes:
+      - ../../:/capcl

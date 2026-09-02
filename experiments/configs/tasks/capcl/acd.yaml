@@ -1,0 +1,25 @@
+# --
+train_strategy: "ft"
+
+# --
+use_caption: true
+num_gen_caps: 5
+
+gen_sim_distill: "kl"
+
+# caption preservation loss weight
+w_cap_loss: 0.0
+# dense captioning loss weight
+# for captions by an external dense captioning model
+# specified by `captioning_model`
+w_dense_cap_loss: 0.0
+
+# image-text contrastive loss weight
+# for generated captions
+w_itc_gen_loss: 0.0
+# image-text contrastive loss weight
+# for captions by an external dense captioning model
+# specified by `captioning_model`
+w_itc_dense_loss: 0.0
+# --
+captioning_model: ""

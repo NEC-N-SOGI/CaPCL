@@ -1,0 +1,173 @@
+[project]
+name = "capcl"
+version = "0.0.1"
+description = "Continual learning for vision-language retrieval models"
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+
+dependencies = [
+  "numpy>=1.24.3,<2.0.0",
+  "torch>=2.7.1,<2.10.0",
+  "torchvision>=0.16.1",
+  "torchaudio>=0.9.1,<2.10.0",
+  "filelock>=3.12.0",
+  "transformers>=4.50.0,<4.51.0",
+  "pydantic>=2.11.7",
+  "accelerate>=0.24.1",
+  "pyyaml>=6.0.1",
+  "peft>=0.8.2",
+  "natsort>=8.4.0",
+  "pillow>=10.4.0",
+  "salesforce-lavis>1.0.1",
+  "tensorboard>=2.13.0",
+  "safetensors>=0.4.3",
+  "flash-attn>=2.7.4.post1",
+]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[dependency-groups]
+dev = [
+  "pre-commit>=4.2.0",
+]
+
+workflow = [
+  "tomli>=2.2.1",
+  "validate-pyproject>=0.24.1",
+  "ty>=0.0.25",
+  "ruff>=0.8.3",
+  "mypy>=1.5.1",
+  "mdformat-gfm>=0.3.5",
+  "mdformat_frontmatter>=0.4.1",
+  "mdformat_footnote>=0.1.1",
+  "pyright>=1.1.398",
+  "types-PyYAML>=6.0.1",
+]
+
+
+[[tool.uv.index]]
+name = "pytorch-cu129"
+url = "https://download.pytorch.org/whl/cu129"
+explicit = true
+
+[tool.uv.sources]
+torch = [{ index = "pytorch-cu129", marker = "platform_system != 'Darwin'" }]
+torchvision = [
+  { index = "pytorch-cu129", marker = "platform_system != 'Darwin'" },
+]
+torchaudio = [
+  { index = "pytorch-cu129", marker = "platform_system != 'Darwin'" },
+]
+salesforce-lavis = { git = "https://github.com/sgnoya/LAVIS.git", branch = "newer-transformers" }
+
+[tool.uv.extra-build-dependencies]
+flash-attn = [{ requirement = "torch", match-runtime = true }]
+
+[tool.uv.extra-build-variables]
+flash-attn = { FLASH_ATTENTION_SKIP_CUDA_BUILD = "TRUE" } # from a compatible, pre-built wheel
+
+[tool.mypy]
+python_version = "3.12"
+explicit_package_bases = true
+check_untyped_defs = true
+disallow_any_decorated = false
+disallow_any_generics = false
+disallow_any_unimported = false
+disallow_incomplete_defs = true
+disallow_subclassing_any = false
+disallow_untyped_calls = true
+disallow_untyped_decorators = false
+disallow_untyped_defs = true
+ignore_errors = false
+ignore_missing_imports = true
+no_implicit_optional = true
+show_error_codes = true
+strict_equality = true
+strict_optional = true
+warn_redundant_casts = true
+warn_return_any = false
+warn_unreachable = true
+warn_unused_configs = true
+warn_unused_ignores = true
+exclude = [".venv", "data"]
+
+[tool.pyright]
+exclude = ["**/node_modules", "**/__pycache__", "**/data/share*"]
+include = ["src"]
+reportMissingImports = true
+reportMissingTypeStubs = false
+reportAttributeAccessIssue = false
+# Add a path to the root of the workspace to let Pylance know where to look for modules.
+
+pythonVersion = "3.12"
+pythonPlatform = "Linux"
+
+[tool.ruff]
+line-length = 85
+indent-width = 4
+target-version = "py312"
+exclude = [".venv"]
+
+[tool.ruff.lint]
+select = ["ALL"]
+ignore = [
+  # To avoid conflicting with the Ruff formatter, some linter rules should be ignored.
+  # See also https://docs.astral.sh/ruff/formatter/#conflicting-lint-rules
+  "W191",   # Checks for indentation that uses tabs.
+  "E111",   # Checks for indentation with a non-multiple of 4 spaces.
+  "E114",   # Checks for indentation of comments with a non-multiple of 4 spaces.
+  "E117",   # Checks for over-indented code.
+  "D206",   # Checks for docstrings that are indented with tabs.
+  "D300",   # Checks for docstrings that use `'''triple single quotes'''` instead of `"""triple double quotes"""`.
+  "Q000",   # Checks for inline strings that use single quotes or double quotes, depending on the value of the `lint.flake8-quotes.inline-quotes` option.
+  "Q001",   # Checks for multiline strings that use single quotes or double quotes, depending on the value of the `lint.flake8-quotes.multiline-quotes` setting.
+  "Q002",   # Checks for docstrings that use single quotes or double quotes, depending on the value of the `lint.flake8-quotes.docstring-quotes` setting.
+  "Q003",   # Checks for strings that include escaped quotes, and suggests changing the quote style to avoid the need to escape them.
+  "COM812", # Checks for the absence of trailing commas.
+  "COM819", # Checks for the presence of prohibited trailing commas.
+  "ISC001", # Checks for implicitly concatenated strings on a single line.
+  "ISC002", # Checks for implicitly concatenated strings that span multiple lines.
+  # Add other other rules to ignore. See also https://docs.astral.sh/ruff/rules/.
+  "E501",   # Checks for lines that exceed the specified maximum character length.
+  "D1",     # Checks for missing docstrings.
+  "FBT001", # boolean typed positional argument in function definition
+  "FBT002", # boolean default positional argument in function definition
+  "SLF001", # Private member acccessed
+  "FIX002", # Line contains TODO
+  "TD003",  # Missing issue link for this TODO
+]
+fixable = ["ALL"]
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.ruff.format]
+# black-like formatter
+indent-style = "space"
+quote-style = "double"
+skip-magic-trailing-comma = false
+line-ending = "auto"
+docstring-code-format = true
+docstring-code-line-length = "dynamic"
+
+[tool.ruff.lint.pylint]
+max-args = 15
+max-returns = 10
+max-statements = 60
+
+
+[tool.ty.environment]
+root = ["./src/"]
+python = "./.venv/"
+python-version = "3.12"
+
+[tool.pyrefly]
+project-includes = ["src"]
+search-path = ["src"]
+python-version = "3.12"
+python-platform = "linux"

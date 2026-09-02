@@ -1,0 +1,3 @@
+model_class: "siglip2"
+model_type: "giant"
+target_module_name: "all"

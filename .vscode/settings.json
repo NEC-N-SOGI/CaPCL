@@ -1,0 +1,75 @@
+{
+    "editor.formatOnSave": true,
+    // Files
+    "files.encoding": "utf8",
+    "files.eol": "\n",
+    // Python
+    "[python]": {
+        "editor.tabSize": 4,
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "charliermarsh.ruff",
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": "always",
+            "source.fixAll": "always"
+        }
+    },
+    "[json]": {
+        "editor.tabSize": 2,
+        "editor.insertSpaces": true,
+        "editor.detectIndentation": false,
+        "files.insertFinalNewline": true,
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "mypy-type-checker.importStrategy": "fromEnvironment",
+    "mypy-type-checker.ignorePatterns": [
+        "**/site-packages/**/*.py",
+        ".vscode/*.py",
+        "**/__pycache__",
+    ],
+    "ty.disableLanguageServices": false,
+    "ty.inlayHints.variableTypes": false,
+    "ty.inlayHints.callArgumentNames": false,
+    "ty.trace.server": "messages",
+    "ty.interpreter": [
+        "/capcl/.venv/bin/python"
+    ],
+    "workbench.colorCustomizations": {
+        "activityBar.background": "#332E0A",
+        "titleBar.activeBackground": "#47410E",
+        "titleBar.activeForeground": "#FCFBF1",
+        "editorInlayHint.foreground": "#888888"
+    },
+    "files.watcherExclude": {
+        "**/.git/objects/**": true,
+        "**/.git/subtree-cache/**": true,
+        "**/node_modules/*/**": true,
+        "/data": true,
+        "**/__pycache__*/**": true,
+        "**/data/share/**": true,
+        "**/experiments/evil_probe": true,
+    },
+    "files.exclude": {
+        "**/Annotations": true,
+        "**/Sentences": true,
+        "**/__pycache__": true,
+    },
+    "path-autocomplete.pathMappings": {
+        "/": "/", // root
+    },
+    "[markdown]": {
+        "editor.formatOnSave": true,
+        "editor.tabSize": 2,
+        "editor.insertSpaces": true,
+        "editor.detectIndentation": false,
+        "editor.defaultFormatter": "yzhang.markdown-all-in-one",
+    },
+    "markdown.extension.list.indentationSize": "inherit",
+    "markdown.extension.orderedList.marker": "one",
+    "markdown.extension.orderedList.autoRenumber": false,
+    "markdown.extension.tableFormatter.enabled": false,
+    // set HF_HOME environment variable, to python kernel
+    "python.envFile": "${workspaceFolder}/.env",
+    "editor.inlayHints.padding": false,
+    "pyright.disableOrganizeImports": true,
+    "python.pythonPath": "uv run python",
+}

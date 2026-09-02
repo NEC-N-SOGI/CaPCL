@@ -1,0 +1,8 @@
+# --
+model_class: "blip2_pretrain"
+model_type: "coco"
+target_module_name: "qformer.bert.query.proj"
+# -- for generation
+top_p: 0.9
+temperature: 1.0
+top_k: -1
